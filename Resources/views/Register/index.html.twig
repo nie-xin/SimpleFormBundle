@@ -1,0 +1,21 @@
+{% extends 'NieSimpleFormBundle::Layout.html.twig' %}
+
+{% block content_content %}
+{% if message is defined %}
+    <h2 class="msg">{{ message }}</div>
+{% else %}
+    {{ form_errors(form) }}
+    <form action="{{ path('register') }}" method="post" {{ form_enctype(form) }}>
+        <h2 class="form-heading">Registeration</h2>
+        <fieldset>
+            {{ form_row(form.username,{'label':'Username: ','attr':{'placeholder':'entre a username'}} ) }}
+            {{ form_row(form.password,{'label':'Password: ', 'type':'password'}) }}
+            {{ form_row(form.address,{'label':'Address: '}) }}
+            {{ form_row(form.email,{'label':'Email: '}) }}
+
+            <button type="submit" class="btn">Submit</button>
+            {{ form_rest(form)  }}
+        </fieldset>
+    </form>
+{% endif %}
+{% endblock %}
